@@ -1,5 +1,5 @@
 plugin-enabled: true
-permitted-creatures:
+prohibited-creatures:
   - bat
   - cod
   - tropical_fish

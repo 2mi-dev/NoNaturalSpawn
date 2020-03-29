@@ -11,7 +11,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 public class MobSpawnListener implements Listener {
 
-  List<EntityType> entityTypes = NoNaturalSpawnPlugin.getConfiguration().getEntities();
+  List<EntityType> entityTypes = NoNaturalSpawnPlugin.getConfiguration().getProhibitedEntities();
 
   @EventHandler
   public void onMobSpawn(CreatureSpawnEvent e) {

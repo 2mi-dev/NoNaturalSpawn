@@ -34,7 +34,7 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
   public void displayList(Player player) {
 
-    List<EntityType> entityTypeList = NoNaturalSpawnPlugin.getConfiguration().getEntities();
+    List<EntityType> entityTypeList = NoNaturalSpawnPlugin.getConfiguration().getProhibitedEntities();
     StringBuilder sb =  new StringBuilder();
 
     for(EntityType entityType : entityTypeList) {
