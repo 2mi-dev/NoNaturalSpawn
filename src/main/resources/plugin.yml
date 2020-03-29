@@ -1,0 +1,21 @@
+name: NoNaturalSpawn
+version: "1.0"
+api-version: "1.15"
+description: "Disables natural spawning of specific mobs"
+
+author: NavyOtter
+website: https://otter.navy/
+
+main: navy.otter.nonaturalspawn.NoNaturalSpawnPlugin
+database: false
+depend: []
+softdepend: []
+
+permissions:
+  nonaturalspawn.list:
+    description: "Lists disabled creatures"
+    default: op
+
+commands:
+  nonaturalspawn:
+    aliases: ["nnspawn", "nns"]

@@ -1,0 +1,7 @@
+plugin-enabled: true
+permitted-creatures:
+  - bat
+  - cod
+  - tropical_fish
+  - salmon
+  - pufferfish
