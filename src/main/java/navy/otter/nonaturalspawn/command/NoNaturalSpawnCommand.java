@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import navy.otter.nonaturalspawn.NoNaturalSpawnPlugin;
+import navy.otter.nonaturalspawn.config.Configuration;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,6 +14,8 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class NoNaturalSpawnCommand implements CommandExecutor {
+
+  Configuration config = NoNaturalSpawnPlugin.getConfiguration();
 
   @Override
   public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command,
@@ -34,18 +37,18 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
   public void displayList(Player player) {
 
-    List<EntityType> entityTypeList = NoNaturalSpawnPlugin.getConfiguration().getProhibitedEntities();
+    List<EntityType> prohibitedEntityTypeList = NoNaturalSpawnPlugin.getConfiguration().getProhibitedEntities();
     StringBuilder sb =  new StringBuilder();
 
-    for(EntityType entityType : entityTypeList) {
+    for(EntityType entityType : prohibitedEntityTypeList) {
       sb.append(entityType.toString());
       sb.append(", ");
     }
 
     sb.delete(sb.length() - 2, sb.length());
 
-    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_AQUA + "NoNaturalSpawn"
-        + ChatColor.GRAY +"] Folgende Kreaturen spawnen nicht:");
+    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "NoNaturalSpawn"
+        + ChatColor.DARK_GRAY +"] " + ChatColor.GRAY +  config.getListInfoMessage());
     player.sendMessage(ChatColor.GRAY + sb.toString());
   }
 }

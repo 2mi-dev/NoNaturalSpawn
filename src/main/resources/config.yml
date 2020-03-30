@@ -1,4 +1,5 @@
 plugin-enabled: true
+list-info-message: "Natürliches Spawning deaktiviert für:"
 prohibited-creatures:
   - bat
   - cod
