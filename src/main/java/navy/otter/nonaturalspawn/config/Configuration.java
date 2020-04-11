@@ -13,12 +13,14 @@ public class Configuration {
 
   private static class Key {
     private final static String PLUGIN_ENABLED = "plugin-enabled";
-    private final static String PROHIBITED_CREATURES = "prohibited-creatures";
+    private final static String WHITELIST_MODE = "whitelist-mode";
+    private final static String CREATURES = "creatures";
     private final static String LIST_INFO_MESSAGE = "list-info-message";
   }
 
   private final boolean isEnabled;
-  private List<EntityType> prohibitedEntities;
+  private final boolean whitelistMode;
+  private List<EntityType> entityList;
   private final String listInfoMessage;
   NoNaturalSpawnPlugin noNaturalSpawnPlugin = NoNaturalSpawnPlugin.getInstance();
 
@@ -28,18 +30,19 @@ public class Configuration {
     plugin.saveConfig();
 
     this.isEnabled = config.getBoolean(Key.PLUGIN_ENABLED);
-    this.prohibitedEntities = new ArrayList<>();
-    List<String> entityNames = config.getStringList(Key.PROHIBITED_CREATURES);
+    this.whitelistMode = config.getBoolean(Key.WHITELIST_MODE);
+    this.entityList = new ArrayList<>();
+    List<String> entityNames = config.getStringList(Key.CREATURES);
     for (String entityName : entityNames) {
       boolean isValid = false;
       for (EntityType entityType : EntityType.values()) {
         if (entityType.name().equalsIgnoreCase(entityName)) {
           isValid = true;
-          prohibitedEntities.add(entityType);
+          entityList.add(entityType);
           break;
         }
       }
-      if (prohibitedEntities.isEmpty()) {
+      if (entityList.isEmpty()) {
         noNaturalSpawnPlugin.getLogger()
             .log(Level.SEVERE, "Either no entities were set in config or all are invalid. Disabling NoSpawn.");
         Bukkit.getPluginManager().disablePlugin(noNaturalSpawnPlugin);
@@ -56,8 +59,12 @@ public class Configuration {
     return isEnabled;
   }
 
-  public List<EntityType> getProhibitedEntities() {
-    return prohibitedEntities;
+  public boolean isWhitelistMode() {
+    return whitelistMode;
+  }
+
+  public List<EntityType> getEntityList() {
+    return entityList;
   }
 
   public String getListInfoMessage() {

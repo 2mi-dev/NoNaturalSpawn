@@ -1,6 +1,7 @@
 plugin-enabled: true
-list-info-message: "Natürliches Spawning deaktiviert für:"
-prohibited-creatures:
+list-info-message: "Aktuelle Spawnbegrenzungen:"
+whitelist-mode: false
+creatures:
   - bat
   - cod
   - tropical_fish

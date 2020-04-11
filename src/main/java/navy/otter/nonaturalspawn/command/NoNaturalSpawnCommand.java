@@ -37,7 +37,7 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
   public void displayList(Player player) {
 
-    List<EntityType> prohibitedEntityTypeList = NoNaturalSpawnPlugin.getConfiguration().getProhibitedEntities();
+    List<EntityType> prohibitedEntityTypeList = NoNaturalSpawnPlugin.getConfiguration().getEntityList();
     StringBuilder sb =  new StringBuilder();
 
     for(EntityType entityType : prohibitedEntityTypeList) {
@@ -47,8 +47,13 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
     sb.delete(sb.length() - 2, sb.length());
 
+    String mode = "BLACKLIST: ";
+    if(config.isWhitelistMode()) {
+      mode = "WHITELIST: ";
+    }
+
     player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "NoNaturalSpawn"
         + ChatColor.DARK_GRAY +"] " + ChatColor.GRAY +  config.getListInfoMessage());
-    player.sendMessage(ChatColor.GRAY + sb.toString());
+    player.sendMessage(ChatColor.GRAY + mode + sb.toString());
   }
 }
