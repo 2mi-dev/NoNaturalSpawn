@@ -35,6 +35,7 @@ public class Configuration {
     this.whitelistMode = config.getBoolean(Key.WHITELIST_MODE);
     this.entityList = new ArrayList<>();
     List<String> entityNames = config.getStringList(Key.CREATURES);
+    this.preventIronGolemSpawning = config.getBoolean(Key.PREVENT_IRON_GOLEM_SPAWNING);
     for (String entityName : entityNames) {
       boolean isValid = false;
       for (EntityType entityType : EntityType.values()) {
@@ -44,9 +45,9 @@ public class Configuration {
           break;
         }
       }
-      if (entityList.isEmpty()) {
+      if (entityList.isEmpty() && !preventIronGolemSpawning) {
         noNaturalSpawnPlugin.getLogger()
-            .log(Level.SEVERE, "Either no entities were set in config or all are invalid. Disabling NoSpawn.");
+            .log(Level.SEVERE, "Either no entities were set in config or all are invalid.");
         Bukkit.getPluginManager().disablePlugin(noNaturalSpawnPlugin);
       } else if (!isValid) {
         noNaturalSpawnPlugin.getLogger()
@@ -55,7 +56,6 @@ public class Configuration {
       }
     }
     this.listInfoMessage = config.getString(Key.LIST_INFO_MESSAGE);
-    this.preventIronGolemSpawning = config.getBoolean(Key.PREVENT_IRON_GOLEM_SPAWNING);
   }
 
   public boolean isEnabled() {
