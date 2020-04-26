@@ -39,13 +39,17 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
     List<EntityType> prohibitedEntityTypeList = NoNaturalSpawnPlugin.getConfiguration().getEntityList();
     StringBuilder sb =  new StringBuilder();
+    String golemStatus = "OFF";
+
+
+    if(config.isPreventIronGolemSpawning()) {
+      golemStatus = "ON";
+    }
 
     for(EntityType entityType : prohibitedEntityTypeList) {
       sb.append(entityType.toString());
       sb.append(", ");
     }
-
-    sb.delete(sb.length() - 2, sb.length());
 
     String mode = "BLACKLIST: ";
     if(config.isWhitelistMode()) {
@@ -54,6 +58,6 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
     player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "NoNaturalSpawn"
         + ChatColor.DARK_GRAY +"] " + ChatColor.GRAY +  config.getListInfoMessage());
-    player.sendMessage(ChatColor.GRAY + mode + sb.toString());
+    player.sendMessage(ChatColor.GRAY + mode + sb.toString() + "IRON_GOLEM: " + golemStatus);
   }
 }

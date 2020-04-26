@@ -16,12 +16,14 @@ public class Configuration {
     private final static String WHITELIST_MODE = "whitelist-mode";
     private final static String CREATURES = "creatures";
     private final static String LIST_INFO_MESSAGE = "list-info-message";
+    private final static String PREVENT_IRON_GOLEM_SPAWNING = "prevent-iron-golem-spawning";
   }
 
   private final boolean isEnabled;
   private final boolean whitelistMode;
   private List<EntityType> entityList;
   private final String listInfoMessage;
+  private final boolean preventIronGolemSpawning;
   NoNaturalSpawnPlugin noNaturalSpawnPlugin = NoNaturalSpawnPlugin.getInstance();
 
   public Configuration(@NotNull NoNaturalSpawnPlugin plugin) {
@@ -53,6 +55,7 @@ public class Configuration {
       }
     }
     this.listInfoMessage = config.getString(Key.LIST_INFO_MESSAGE);
+    this.preventIronGolemSpawning = config.getBoolean(Key.PREVENT_IRON_GOLEM_SPAWNING);
   }
 
   public boolean isEnabled() {
@@ -69,5 +72,9 @@ public class Configuration {
 
   public String getListInfoMessage() {
     return listInfoMessage;
+  }
+
+  public boolean isPreventIronGolemSpawning() {
+    return preventIronGolemSpawning;
   }
 }

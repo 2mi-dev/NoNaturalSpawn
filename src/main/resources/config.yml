@@ -1,6 +1,7 @@
 plugin-enabled: true
 list-info-message: "Aktuelle Spawnbegrenzungen:"
 whitelist-mode: false
+prevent-iron-golem-spawning: true
 creatures:
   - bat
   - cod
