@@ -39,11 +39,11 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
     List<EntityType> prohibitedEntityTypeList = NoNaturalSpawnPlugin.getConfiguration().getEntityList();
     StringBuilder sb =  new StringBuilder();
-    String golemStatus = "OFF";
+    String golemStatus = "ON";
 
 
     if(config.isPreventIronGolemSpawning()) {
-      golemStatus = "ON";
+      golemStatus = "OFF";
     }
 
     for(EntityType entityType : prohibitedEntityTypeList) {
