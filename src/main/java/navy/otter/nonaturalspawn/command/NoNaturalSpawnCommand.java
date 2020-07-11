@@ -41,7 +41,6 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
     StringBuilder sb =  new StringBuilder();
     String golemStatus = "ON";
 
-
     if(config.isPreventIronGolemSpawning()) {
       golemStatus = "OFF";
     }
@@ -58,6 +57,7 @@ public class NoNaturalSpawnCommand implements CommandExecutor {
 
     player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "NoNaturalSpawn"
         + ChatColor.DARK_GRAY +"] " + ChatColor.GRAY +  config.getListInfoMessage());
-    player.sendMessage(ChatColor.GRAY + mode + sb.toString() + "IRON_GOLEM: " + golemStatus);
+    player.sendMessage(ChatColor.GRAY + mode + sb.toString());
+    player.sendMessage(ChatColor.GRAY +  "IRON_GOLEM: " + golemStatus);
   }
 }

@@ -6,7 +6,9 @@ import navy.otter.nonaturalspawn.command.NoNaturalSpawnCommandTabCompleter;
 import navy.otter.nonaturalspawn.config.Configuration;
 import navy.otter.nonaturalspawn.listener.MobSpawnListener;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Minecart;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
 public class NoNaturalSpawnPlugin extends JavaPlugin {
 
